@@ -1,0 +1,115 @@
+.foto-drawer{
+    height: auto;
+    background: #830A0A;
+    box-shadow: 5px 0px 30px rgba(0, 0, 0, 0.6);
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    top: 20%;
+    left: 0%;
+    width: 55%;
+    z-index: 200;
+    transform: translateX(-170%);
+    transition: transform 0.3s ease-out;
+
+}
+
+.center-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+.foto-drawer.open{
+    transform: translateX(0);
+    top: 20%;
+    left: 0%;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    height: auto;
+}
+.fotogrid img{
+    border: 2em #DC0808;
+    border-radius: 1em;
+    margin: auto;
+    width: 90%;
+    min-height: 70%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.fotogrid {
+    justify-content: space-between;
+}
+/* Media Querie */
+
+@media(max-width: 700px) {
+    .fotogrid{
+        display: grid;
+        justify-content: space-between;
+        padding: 1em;
+    }
+  
+    .fotogrid img{
+        justify-content: space-between;
+        display: grid;
+        grid-column: 2/4;
+        height: auto; 
+    }
+  
+
+}
+@media(min-width: 700px) {
+    .fotogrid{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr;
+        padding: 1em;
+        height: 100%;
+
+    }
+    .fotogrid img{
+        columns: 1;
+        max-height: 750px; 
+    }
+}
+@media(min-width: 950px) {
+    .fotogrid img{
+        columns: 1;
+        max-height: 750px; 
+    }
+}
+@media (min-width: 1025px ) {
+    .foto-drawer.open{
+        top: 10%;
+        height: 80%;
+    }
+    .foto-drawer{
+        left: 0;
+        height: 80%;
+        width: auto;
+    }
+    .fotogrid img {
+        max-height: 80%;
+        width: auto;
+    }
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .foto-drawer.open{
+        top: 35%;
+    }
+}
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .foto-drawer.open{
+        top: 35%;
+    }
+}
