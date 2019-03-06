@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import './App.css';
 
-import FotoSlide from "./components/Fotos/Fotos"
+import FotoSlide from "./components/Fotos/Fotos";
+import Contact from "./components/Contact/contact";
 
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
@@ -20,16 +21,17 @@ class App extends Component {
   state = {
     sideDrawerOpen: false,
     picturesOpen: false,
-    imageIndex: 0
-  };
- 
+    imageIndex: 0,
+    contactOpen: false
+  }
+
   handleClickOne = () => {
     this.setState(prevState => {
       if(this.state.imageIndex >= 0) {this.pictureOpenClickHandler();}
         let nop = 0;
        return {imageIndex: nop }
     })
-}
+};
 
   handleClickTwo = () => {
     this.setState(prevState => {
@@ -37,7 +39,7 @@ class App extends Component {
         let nop = 1;
        return {imageIndex: nop }
     })
-}
+};
 
 handleClickTree = () => {
   this.setState(prevState => {
@@ -45,7 +47,7 @@ handleClickTree = () => {
       let nop = 2;
      return {imageIndex: nop }
   })
-}
+};
 
 handleClickFour = () => {
   this.setState(prevState => {
@@ -53,7 +55,7 @@ handleClickFour = () => {
       let nop = 3;
      return {imageIndex: nop }
   })
-}
+};
 
 handleClickFive = () => {
   this.setState(prevState => {
@@ -61,18 +63,24 @@ handleClickFive = () => {
       let nop = 4;
      return {imageIndex: nop }
   })
-}
+};
+
+  contactOpenClickHandler = () => {
+    this.setState((prevState) => {
+      return { contactOpen: !prevState.contactOpen }
+    })
+  };
 
   pictureOpenClickHandler = () => {
     this.setState((prevState) => {
       return { picturesOpen: !prevState.picturesOpen }
-    });
+    })
   };
   
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
       return { sideDrawerOpen: !prevState.sideDrawerOpen }
-    });
+    })
   };
 
   backdropClickHandler = () => {
@@ -81,9 +89,12 @@ handleClickFive = () => {
 
   render() {
     let backdrop;
+    let contactBoard;
     if (this.state.sideDrawerOpen || this.state.picturesOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />
-    } 
+    }if (this.state.contactOpen) {
+      contactBoard = <Contact />;
+    }
     return (
       <div style={{ height: "100%" }}>
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
@@ -194,6 +205,7 @@ handleClickFive = () => {
             </ul>
           </section>
 
+      
             {/* This is section C 1 */}
           <section id="section-c" className="grid">
             <div className="content-wrap">
@@ -208,21 +220,35 @@ handleClickFive = () => {
               </p>
             </div>
           </section> 
+    
 
+          
             {/* This is section C 2 */}
           <section id="section-cdos" className="grid">
             <div className="content-wrap">
-              <h2 className="content-title">Nuestros Productos</h2>
+              <h2 className="content-title">Nuestros</h2>
               <p>
                 Satisfied conveying an dependent contented he gentleman agreeable do be.
                 Warrant private blushes removed an in equally totally if. Delivered dejection
-                necessary objection do mr prevailed. Mr feeling do chiefly cordial in do. Water
-                timed folly right aware if oh truth. Imprudence attachment him his for sympathize.
-                Large above be to means. Dashwood do provided stronger is. But discretion frequently
-                sir the she instrument unaffected admiration everything.
+                necessary objection do mr prevailed.
               </p>
             </div>
           </section>
+
+          {/* This is section C 3 */}
+          <section id="section-ctres" className="grid">
+            <div className="content-wrap" id="contactform">
+            <a
+            id="1"  
+            className="btn"
+            onClick={this.contactOpenClickHandler}
+            >Contactanos</a>
+
+              {contactBoard}
+
+            </div>
+          </section>
+       
 
           {/* This is section D */}
           <section id="section-d" className="grid">

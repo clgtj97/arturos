@@ -35,6 +35,7 @@
     align-items: center;
     height: 100%;
     padding: 0% 3%;
+    z-index: 2000;
 }
 .toolbar_navigation-items a{
     color: #F0F2F5;

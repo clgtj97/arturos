@@ -102,6 +102,16 @@ p {
 
 #section-cdos {
     background: #4B5E81;
+    padding: 2em;
+}
+#section-ctres{
+    background: rgb(153, 153, 153);
+    color: #EBECF0;
+    padding: 2em;
+}
+.content-wrap #contactform{
+    grid-column: 1;
+    display: inline-block;
 }
 
 /* section D / Boxes  */
