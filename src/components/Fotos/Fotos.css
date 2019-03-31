@@ -1,6 +1,6 @@
 .foto-drawer{
     height: auto;
-    background: #830A0A;
+    background: #DB3343;
     box-shadow: 5px 0px 30px rgba(0, 0, 0, 0.6);
     position: fixed;
     justify-content: space-between;
@@ -9,7 +9,7 @@
     left: 0%;
     width: 55%;
     z-index: 200;
-    transform: translateX(-170%);
+    transform: translateX(-200%);
     transition: transform 0.3s ease-out;
 
 }
@@ -64,13 +64,14 @@
         display: grid;
         justify-content: space-between;
         grid-template-columns: 1fr;
-        padding: 1em;
+        padding: 0em;
         height: 100%;
 
     }
     .fotogrid img{
         columns: 1;
-        max-height: 750px; 
+        max-height: 750px;
+        padding: 0; 
     }
 }
 @media(min-width: 950px) {
@@ -85,6 +86,7 @@
         height: 80%;
     }
     .foto-drawer{
+        top: 10%;
         left: 0;
         height: 80%;
         width: auto;
@@ -92,6 +94,8 @@
     .fotogrid img {
         max-height: 80%;
         width: auto;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 }
 @media only screen 
@@ -99,6 +103,9 @@
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
     .foto-drawer.open{
+        top: 35%;
+    }
+    .foto-drawer{
         top: 35%;
     }
 }
@@ -110,6 +117,19 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .foto-drawer.open{
+        top: 35%;
+    }
+    .fotogrid{
+        min-height: 250px;
+        max-height: 250px;
+    }
+    .foto-drawer.open #imgsize{
+        position: relative;
+        margin: 0;
+        height: 100%;
+        width: auto;
+    }
+    .foto-drawer{
         top: 35%;
     }
 }

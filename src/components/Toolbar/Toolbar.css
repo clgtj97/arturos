@@ -3,8 +3,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #081A4D;
-    height: 20%;
+    background: #DB3343;
+    height: 15%;
 
 }
 .toolbar__logo{
@@ -20,12 +20,13 @@
     margin-left: 40px;
     width: auto;
     height: 70%;
+    border-radius: 0.5em;
 }
 .large__text{
     margin: 0;
     margin-left: 80px;
     padding-left: 0%;
-    font-size: 400%;
+    font-size: 200%;
 }
 .redline{
     margin-right: 5%;
@@ -37,6 +38,10 @@
     padding: 0% 3%;
     z-index: 2000;
 }
+#center_img{
+    position: relative;
+    
+}
 .toolbar_navigation-items a{
     color: #F0F2F5;
     text-decoration: none;
@@ -45,7 +50,7 @@
 }
 .toolbar_navigation-items a:hover,
 .toolbar_navigation-items a:active{
-    color: #577DC1;
+    color: #DAA4A9;
 }
 .toolbar_navigation-items ul{
     list-style: none;
@@ -69,7 +74,7 @@
 
 @media (max-width: 1275px) {
     .large__text{
-    font-size: 430%;
+    font-size: 230%;
     }
 }
 @media ( max-width: 1024px ) {

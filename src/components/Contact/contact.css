@@ -1,5 +1,21 @@
+    
+.user{
+    background-image: url(art.png);
+    background-size: cover;
+    width: 5em;
+    height: 5em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    position: inherit;
+    margin: auto;
+    margin-top: 0em;
+    margin-bottom: 3.5em;
+}
 .inputBox{
     text-align: center;
+}
+.inputBox:hover {
+    z-index: 1;
 }
 form{
     font-family: Optima, sans-serif black;
@@ -8,26 +24,39 @@ form{
 
 .boxContact{
     width: auto;
-    padding: 40px;
-    background: rgba(0, 0, 0, .8);
+    padding: 80px;
+    background: #EBECF0;
     box-sizing: border-box;
     box-shadow:0 15px 25px  rgba(0, 0, 0, .5);
     border-radius: 10px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 5em;
+    margin-bottom: 3em;
+}
+.boxContactIn{
+    width: auto;
+    padding: 3.5em;
+    background: #999999;
+    box-sizing: border-box;
+    box-shadow:0 30px 30px rgba(0, 0, 0, .4);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 3.5em;
 }
 .boxContact h2{
-    margin: 0 0 2.5em;
+    margin: 1em 0 2em;
+    font-size: 210%;
     padding: 0;
-    color: #fff;
+    color: #656464;
     text-align: center; 
 }
 .boxContact .inputBox{
-    position:  relative;
-    
+   align-content: center;
+   
 }
 .boxContact .inputBox input{
-    width: 100%;
+    
+    width: 80%;
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
@@ -39,32 +68,46 @@ form{
     background: transparent;
 }
 .boxContact .inputBox label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
+   
+    padding: 25px 0;
     font-size: 20px;
-    color: #fff;
+    color: #656464;
     pointer-events: none;
     transition: .5s;
 }
-.boxContact .inputBox input:focus ~ label,
-.boxContact .inputBox input:valid ~ label
-{
-    top: -18px;
-    left: 0;
-    color: #03a9f4;
-    font-size: 16px;
-}
+
 .boxContact input[type="submit"]
 {
     background: transparent;
+    margin-top: 2.5em;
+    font-size: 25px;
     border: none;
     outline: none;
     color: #fff;
-    background: #03a9f4;
-    padding: 10px 20px;
+    background: #656464;
+    padding: 25px 75px;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow:0 15px 25px  rgba(0, 0, 0, .5);
+    box-shadow:0 20px 25px rgba(1, 1, 1, .6);
+}
+.boxContact input[type="submit"]:hover{
+    background: #4D5461;
+}
+@media (max-width: 1025px ) {
+    .boxContact{
+        padding: 1em
+    }
+    .boxContact .inputBox label{
+        font-size: 22px;
+    }
+    .boxContact h2{
+        font-size: 30px;
+        margin: 2em 0 3em;
+    }
+    .boxContact input[type="submit"]
+{
+    margin-top: 3em;
+    margin-bottom: 2em;
+    padding: 20px 70px;
+}
 }

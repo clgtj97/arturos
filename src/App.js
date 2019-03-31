@@ -7,11 +7,13 @@ import Contact from "./components/Contact/contact";
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
+import Slidebox from "./components/Slidebox/Slidebox";
 import imageOne from "./artFoto/artOne.jpg";
 import imageTwo from "./artFoto/artTwo.jpg";
 import imageTre from "./artFoto/artTree.jpg";
 import imageFiv from "./artFoto/artFiv.jpg";
 import imageSix from "./artFoto/artSix.jpg";
+import imagerealOn from "./artFoto/artrealone.jpg";
 
 
 
@@ -22,8 +24,27 @@ class App extends Component {
     sideDrawerOpen: false,
     picturesOpen: false,
     imageIndex: 0,
-    contactOpen: false
+    contactOpen: false,
+    slideIndex: 0
   }
+
+  incrementCount = () =>{
+    if(this.state.slideIndex <= 2){
+    this.setState({ slideIndex: this.state.slideIndex + 1 });
+  }else{
+    var zero = 0;
+    this.setState({ slideIndex: zero });
+  }
+}
+
+  decrementCount = () =>{
+    if(this.state.slideIndex >= 1){
+    this.setState({ slideIndex: this.state.slideIndex - 1 });
+  }else{
+    var zero = 3;
+    this.setState({ slideIndex: zero });
+  }
+}
 
   handleClickOne = () => {
     this.setState(prevState => {
@@ -96,23 +117,29 @@ handleClickFive = () => {
       contactBoard = <Contact />;
     }
     return (
-      <div style={{ height: "100%" }}>
+      <div >
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
         <FotoSlide img={this.state.imageIndex} show={this.state.picturesOpen} />
         
         {backdrop}
+        
         <div className="toolbarSpace">
         <header id="showcase" className="grid">
-          <div className="bg-image"></div>
+          <div className="bg-image"> </div>
           <div className="content-wrap">
             <h1>Bienvenidos a Confort Ambiental</h1>
-            <p>Greatest properly off ham exercise all. Unsatiable invitation its possession nor off. All difficulty estimating unreserved increasing the solicitude. Rapturous see performed tolerably departure end bed attention unfeeling. On unpleasing principles alteration of. Be at performed preferred determine collected. Him nay acuteness discourse listening estimable our law. Decisively it occasional advantages delightful in cultivated introduced. Like law mean form are sang loud lady put. </p>
-            <a
+            <p>
+              Contamos con 27 años de experiencia en la industria lo cual nos permite
+              ofrecer servicio con calidad, usted puede tener la confianza que
+              tenemos la capacidad para desarrollar cualquier proyecto y
+              seleccionar los productos en su beneficio.
+             </p>
+            <button
             id="1"  
             className="btn"
             onClick={this.handleClickOne}
-            >Lee mas sobre nosotros</a>
+            >Lee mas sobre nosotros</button>
               
                 
           </div>
@@ -120,25 +147,17 @@ handleClickFive = () => {
         </div>
         <main id="main" >
           {/* This is section A */}
-          <section id="section-a" className="grid">
+
+            <section id="section-a" className="grid">
             <div className="content-wrap">
-              <h2 className="content-title">Que hacemos ?</h2>
-              <div className="content-text">
-                  <p>
-                    Picture removal detract earnest is by. Esteems met joy attempt way clothes yet demesne tedious.
-                    Replying an marianne do it an entrance advanced. Two dare say play when hold. Required bringing
-                    me material stanhill jointure is as he. Mutual indeed yet her living result matter him bed whence.
-                    Ham followed now ecstatic use speaking exercise may repeated. Himself he evident oh greatly my on
-                    inhabit general concern. It earnest amongst he showing females so improve in picture. Mrs can hundred
-                    its greater account. Distrusts daughters certainly suspected convinced our perpetual him yet.
-                    Words did noise taken right state are since.
-                  </p>
-                  <a
-            id="2"  
-            className="btn"
-            onClick={this.handleClickFour}
-            >Lee mas sobre nosotros</a>
-                </div>
+              <h2 className="content-title">Nuestros</h2>
+              <p>
+              Una compañía dedicada a los servicios de instalación y venta de equipos de aire acondicionado, refrigeración, 
+              extracción, calefacción, aislamientos y filtración. Nuestros servicios incluyen control de temperatura, 
+              calidad del aire y control de humedad con equipos ahorradores energía. Contamos con 27 años de experiencia 
+              en la industria lo cual nos permite ofrecer servicio con calidad, usted puede tener la confianza que 
+              tenemos la capacidad para desarrollar cualquier proyecto y seleccionar los productos en su beneficio. 
+              </p>
             </div>
           </section>
 
@@ -221,12 +240,19 @@ handleClickFive = () => {
             </div>
           </section> 
     
+          {/* image slide */}
+          <section id="section-ca" className="grid">
+            <div className="content-wrap">
+              <Slidebox dig={this.state.slideIndex} next={this.incrementCount} back={this.decrementCount} >
+              </ Slidebox>
+            </div>
+          </section> 
 
           
             {/* This is section C 2 */}
           <section id="section-cdos" className="grid">
             <div className="content-wrap">
-              <h2 className="content-title">Nuestros</h2>
+              <h2 className="content-title">Contactanos</h2>
               <p>
                 Satisfied conveying an dependent contented he gentleman agreeable do be.
                 Warrant private blushes removed an in equally totally if. Delivered dejection
@@ -239,13 +265,14 @@ handleClickFive = () => {
           <section id="section-ctres" className="grid">
             <div className="content-wrap" id="contactform">
             <a
-            id="1"  
+            id="contactbtn"  
             className="btn"
             onClick={this.contactOpenClickHandler}
             >Contactanos</a>
-
+            
+            
               {contactBoard}
-
+           
             </div>
           </section>
        
@@ -263,7 +290,7 @@ handleClickFive = () => {
                 </p>
             </div>
             <div className="box">
-              <h2 className="content-title">Contactanos</h2>
+              <h2 className="content-title"></h2>
               <p>
                  UArrival entered an if drawing request.
                  How daughters not promotion few knowledge
@@ -279,7 +306,7 @@ handleClickFive = () => {
 
         {/* Footer */}
           <footer id="main-footer" className="grid">
-            <div>Confor Ambiental</div>
+            <div>Confort Ambiental</div>
             <div>Projecto hecho por: <a href="https://ejs-port.herokuapp.com" rel="noopener noreferrer" target="_blank">Cesar Leyva</a></div>
           </footer>
       </div>

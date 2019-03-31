@@ -1,5 +1,5 @@
 import React from "react";
-import image from './OK.png';
+import image from './art.png';
 
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import './Toolbar.css';
@@ -13,7 +13,7 @@ const toolbar = props => (
                   
                     <img src={image} alt="foto1" className="toolbar__img"  />
                 
-                <div className="toolbar_navigation-items">
+                <div id="center_img" className="toolbar_navigation-items">
                     <ul>
                         <li>
                             <a className="large__text" href="/">Confort Ambiental</ a>

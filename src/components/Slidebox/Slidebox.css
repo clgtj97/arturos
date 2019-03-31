@@ -1,0 +1,16 @@
+.red{
+    grid-column: 1;
+    display: inline-block;
+    background: #DB3343;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    padding: 2em 3em;
+    margin: 0;
+    border-radius: 1em;
+}
+.red img{
+    margin: 0;
+    width: 100%;
+    height: auto;
+}

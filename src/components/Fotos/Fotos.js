@@ -10,34 +10,42 @@ import imageFiv from "./../../artFoto/artSix.jpg";
 
 
 const fotos = props => {
-    var one = imageOne;
-    var two = imageTwo;
-    var tre = imageTre;
-    var fort = imageFor;
-    var fiv = imageFiv;
 
     var index;
-
+    var resize;
+    var imgNow = props.img;
 
     let fotoClasses= 'foto-drawer';
+    switch (imgNow)
+            {
+               case 0: 
+                index = imageOne;
+                resize = "imgsize";
+               break;
+            
+               case 1: index = imageTwo;
+               break;
+            
+               case 2: index = imageTre;
+               break;
+            
+               case 3: index = imageFor;
+               break;
+            
+               case 4: index = imageFiv;
+               break;
+            
+               default:  index = imageOne;
+                         resize = "none";
+            }
     if(props.show) {
         fotoClasses= 'foto-drawer open';
-    }if(props.img === 0 ) {
-        index = one;
-    }if(props.img === 1) {
-        index = two;
-    }if(props.img === 2) {
-        index = tre;
-    }if(props.img === 3) {
-        index = fort;
-    }if(props.img === 4) {
-        index = fiv;
     }
     return(
         
             <nav className={fotoClasses} >
                 <div className="fotogrid">
-                    <img src={ index } alt="importImage"  ></ img>
+                    <img src={ index } alt="importImage" id= { resize } ></ img>
                 </div>
             </ nav>
         
