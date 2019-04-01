@@ -376,7 +376,7 @@ handleClickFive = () => {
 
                 
 
-                <form action={this.api} method="POST">
+                <form  >
                   <input
                     type="text"
                     name="fname"
@@ -398,7 +398,7 @@ handleClickFive = () => {
 
                   <input 
                     type="submit"
-                    onSubmit={this.onSubmit()} 
+                    onSubmit={this.api} 
                   />
                 </form>
                 
