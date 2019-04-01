@@ -176,9 +176,9 @@ handleClickFive = () => {
        Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
        'Content-Type': 'application/json' },
     body: 
-     { email_address: 'Ces@gmail.com',
+     { email_address: 'Ce@gmail.com',
        status: 'subscribed',
-       merge_fields: { FNAME: 'the', LNAME: 'BOSS' } },
+       merge_fields: { FNAME: 'test', LNAME: 'win' } },
     json: true });
 
     const { fname, lname, email } = this.state;
