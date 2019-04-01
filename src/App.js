@@ -362,7 +362,7 @@ handleClickFive = () => {
 
                 
 
-                <form action="/thanks" method="POST">
+                <form action={this.onSubmit} method="POST">
                   <input
                     type="text"
                     name="fname"
