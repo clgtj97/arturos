@@ -152,6 +152,28 @@ handleClickFive = () => {
 
     }
 
+    api = () => { axios({ method: 'POST',
+    url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
+    headers: 
+     { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
+       'cache-control': 'no-cache',
+       Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
+       'Content-Type': 'application/json' },
+    body: 
+     { email_address: 'Ce@gmail.com',
+       status: 'subscribed',
+       merge_fields: { FNAME: 'test', LNAME: 'win' } },
+    json: true })
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+        //handle error
+        console.log(response);
+    });
+  }
+  
   render() {
     let backdrop;
     let contactBoard;
@@ -168,19 +190,6 @@ handleClickFive = () => {
       boxSizing: "border-box"
     };
 
-     api () => { axios({ method: 'POST',
-    url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
-    headers: 
-     { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
-       'cache-control': 'no-cache',
-       Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
-       'Content-Type': 'application/json' },
-    body: 
-     { email_address: 'Ce@gmail.com',
-       status: 'subscribed',
-       merge_fields: { FNAME: 'test', LNAME: 'win' } },
-    json: true });
-  }
 
     const { fname, lname, email } = this.state;
 
