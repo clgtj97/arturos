@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './App.css';
+import axios from 'axios';
 
 import FotoSlide from "./components/Fotos/Fotos";
 import Contact from "./components/Contact/contact";
@@ -25,8 +26,12 @@ class App extends Component {
     picturesOpen: false,
     imageIndex: 0,
     contactOpen: false,
-    slideIndex: 0
+    slideIndex: 0,
+    email: "",
+    fname: "",
+    lname: ""
   }
+  
 
   incrementCount = () =>{
     if(this.state.slideIndex <= 2){
@@ -107,14 +112,69 @@ handleClickFive = () => {
   backdropClickHandler = () => {
     this.setState({ sideDrawerOpen: false, picturesOpen: false })
   };
+  SwapDivsWithClick = (div1, div2) => {
+    let d1 = document.getElementById(div1);
+    let d2 = document.getElementById(div2);
+    if (d2.style.socl.display == "none") {
+        d1.style.display = "none";
+        d2.style.display = "block";
+    }
+    else {
+        d1.style.display = "block";
+        d2.style.display = "none";
+    }
+}
+    onChange = (e) => {
+      /*
+        Because we named the inputs to match their
+        corresponding values in state, it's
+        super easy to update the state
+      */
+      this.setState({ [e.target.name]: e.target.value });
+    }
+    onSubmit = (e) => {
+      // get our form data out of state
+      const { fname, lname, email } = this.state;
+      
+      axios({ method: 'POST',
+      url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
+      headers: 
+       { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
+         'cache-control': 'no-cache',
+         Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
+         'Content-Type': 'application/json' },
+      body: 
+       { email_address: 'oyyes@gmail.com',
+         status: 'subscribed',
+         merge_fields: { FNAME: 'one', LNAME: 'BOSS' } },
+      json: true });
+      
+
+    }
 
   render() {
     let backdrop;
     let contactBoard;
+    let nocl;
+    let sfcl = {
+      textAlign: "center",
+      position: "relative",
+      fontWeight: "bold",
+      fontStyle: "italic"
+    };
+    let socl = {
+      display: "none",
+      textAlign:"center",
+      boxSizing: "border-box"
+    };
+    const { fname, lname, email } = this.state;
+
     if (this.state.sideDrawerOpen || this.state.picturesOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />
     }if (this.state.contactOpen) {
-      contactBoard = <Contact />;
+      nocl = sfcl;
+    }else{
+      nocl = socl;
     }
     return (
       <div >
@@ -126,12 +186,12 @@ handleClickFive = () => {
         
         <div className="toolbarSpace">
         <header id="showcase" className="grid">
-          <div className="bg-image"> </div>
-          <div className="content-wrap">
+          <div className="bg-image"></div>
+          <div className="content-wrap" id="backimg">
             <h1>Bienvenidos a Confort Ambiental</h1>
             <p>
-              Contamos con 27 años de experiencia en la industria lo cual nos permite
-              ofrecer servicio con calidad, usted puede tener la confianza que
+              Contamos con 27 años de experiencia en la industria, permitiendo nos 
+              ofrecer servicios con calidad, puede tener la confianza que
               tenemos la capacidad para desarrollar cualquier proyecto y
               seleccionar los productos en su beneficio.
              </p>
@@ -150,7 +210,7 @@ handleClickFive = () => {
 
             <section id="section-a" className="grid">
             <div className="content-wrap">
-              <h2 className="content-title">Nuestros</h2>
+              <h2 className="content-title">Somos</h2>
               <p>
               Una compañía dedicada a los servicios de instalación y venta de equipos de aire acondicionado, refrigeración, 
               extracción, calefacción, aislamientos y filtración. Nuestros servicios incluyen control de temperatura, 
@@ -245,6 +305,7 @@ handleClickFive = () => {
             <div className="content-wrap">
               <Slidebox dig={this.state.slideIndex} next={this.incrementCount} back={this.decrementCount} >
               </ Slidebox>
+
             </div>
           </section> 
 
@@ -252,7 +313,7 @@ handleClickFive = () => {
             {/* This is section C 2 */}
           <section id="section-cdos" className="grid">
             <div className="content-wrap">
-              <h2 className="content-title">Contactanos</h2>
+              <h2 className="content-title">Nuestros</h2>
               <p>
                 Satisfied conveying an dependent contented he gentleman agreeable do be.
                 Warrant private blushes removed an in equally totally if. Delivered dejection
@@ -262,10 +323,12 @@ handleClickFive = () => {
           </section>
 
           {/* This is section C 3 */}
+
+          {/*
           <section id="section-ctres" className="grid">
             <div className="content-wrap" id="contactform">
             <a
-            id="contactbtn"  
+            id="1"  
             className="btn"
             onClick={this.contactOpenClickHandler}
             >Contactanos</a>
@@ -275,7 +338,64 @@ handleClickFive = () => {
            
             </div>
           </section>
+          */}
+
+           <section id="section-ctres" className="grid">
+            <div className="content-wrap" id="contactform">
+
+                <a
+                id="1"  
+                className="btn"
+                onClick={this.contactOpenClickHandler}
+                >Contactanos</a>
+
+                
+              
+
+            </div>
+
+          </section>
+          <div id="swapper-first" style = {nocl} >
+
+          <section id="section-ctres" className="grid">
+            <div className="content-wrap" id="contactform">
+
+                
+
+                <form action="/thanks" method="POST">
+                  <input
+                    type="text"
+                    name="fname"
+                    value={fname}
+                    onChange={this.onChange}
+                  />
+                  <input
+                    type="text"
+                    name="lname"
+                    value={lname}
+                    onChange={this.onChange}
+                  />
+                  <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={this.onChange}
+                  />
+
+                  <input 
+                    type="submit"
+                    onSubmit={this.onSubmit()} 
+                  />
+                </form>
+                
+              
+
+            </div>
+          </section>
        
+
+
+              </div>
 
           {/* This is section D */}
           <section id="section-d" className="grid">
@@ -290,7 +410,7 @@ handleClickFive = () => {
                 </p>
             </div>
             <div className="box">
-              <h2 className="content-title"></h2>
+              <h2 className="content-title">Contactanos</h2>
               <p>
                  UArrival entered an if drawing request.
                  How daughters not promotion few knowledge

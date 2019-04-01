@@ -4,9 +4,10 @@ import "./contact.css";
 import imageOne from "./../../artFoto/artOne.jpg";
 
 const contact = props => {
+    var emailOn = props.emails;
     return(   
     <div className="boxContact" >
-        <form>      
+        <form method="POST">      
 
             <h2> En que te podemos apoyar hoy ? </h2>
 
