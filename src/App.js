@@ -167,6 +167,20 @@ handleClickFive = () => {
       textAlign:"center",
       boxSizing: "border-box"
     };
+
+    let api = axios({ method: 'POST',
+    url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
+    headers: 
+     { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
+       'cache-control': 'no-cache',
+       Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
+       'Content-Type': 'application/json' },
+    body: 
+     { email_address: 'Ces@gmail.com',
+       status: 'subscribed',
+       merge_fields: { FNAME: 'the', LNAME: 'BOSS' } },
+    json: true });
+
     const { fname, lname, email } = this.state;
 
     if (this.state.sideDrawerOpen || this.state.picturesOpen) {
@@ -362,7 +376,7 @@ handleClickFive = () => {
 
                 
 
-                <form action={this.onSubmit} method="POST">
+                <form action={this.api} method="POST">
                   <input
                     type="text"
                     name="fname"
