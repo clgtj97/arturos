@@ -168,7 +168,7 @@ handleClickFive = () => {
       boxSizing: "border-box"
     };
 
-    let api = axios({ method: 'POST',
+     api () => { axios({ method: 'POST',
     url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
     headers: 
      { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
@@ -180,6 +180,7 @@ handleClickFive = () => {
        status: 'subscribed',
        merge_fields: { FNAME: 'test', LNAME: 'win' } },
     json: true });
+  }
 
     const { fname, lname, email } = this.state;
 
