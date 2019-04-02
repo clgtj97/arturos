@@ -115,7 +115,7 @@ handleClickFive = () => {
   SwapDivsWithClick = (div1, div2) => {
     let d1 = document.getElementById(div1);
     let d2 = document.getElementById(div2);
-    if (d2.style.socl.display == "none") {
+    if (d2.style.socl.display === "none") {
         d1.style.display = "none";
         d2.style.display = "block";
     }
@@ -125,6 +125,7 @@ handleClickFive = () => {
     }
 }
     onChange = (e) => {
+      e.preventDefault();
       /*
         Because we named the inputs to match their
         corresponding values in state, it's
@@ -136,44 +137,42 @@ handleClickFive = () => {
       // get our form data out of state
       const { fname, lname, email } = this.state;
       
-      axios({ method: 'POST',
-      url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
-      headers: 
-       { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
-         'cache-control': 'no-cache',
-         Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
-         'Content-Type': 'application/json' },
-      body: 
-       { email_address: 'oyyes@gmail.com',
-         status: 'subscribed',
-         merge_fields: { FNAME: 'one', LNAME: 'BOSS' } },
-      json: true });
+      var request = require("request");
+
+      var options = { method: 'POST',
+        url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
+       
+        headers: 
+        { 
+          'Postman-Token': '57d47450-c1b4-40e5-a7fb-27d989281a95',
+          'cache-control': 'no-cache',
+          Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
+          'Access-Control-Allow-Origin':'*',
+          'Content-Type': 'application/json' },
+        body: 
+        { email_address: 'win@gmail.com',
+          status: 'subscribed',
+          merge_fields: { FNAME: 'cesar', LNAME: 'win' } },
+        json: true };
+
+      axios(
+      request(options, function (error, response, body) {
+        
+
+        console.log(body);
+})).then(function (response) {
+  //handle success
+  console.log(response);
+})
+.catch(function (response) {
+  //handle error
+  console.log(response);
+});
       
 
     }
 
-    api = () => { axios({ method: 'POST',
-    url: 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members',
-    headers: 
-     { 'Postman-Token': 'd7a5f2ea-feb0-4ef4-847f-b33fb941b65a',
-       'cache-control': 'no-cache',
-       Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
-       'Content-Type': 'application/json' },
-    body: 
-     { email_address: 'Ce@gmail.com',
-       status: 'subscribed',
-       merge_fields: { FNAME: 'test', LNAME: 'win' } },
-    json: true })
-    .then(function (response) {
-      //handle success
-      console.log(response);
-    })
-    .catch(function (response) {
-        //handle error
-        console.log(response);
-    });
-  }
-  
+
   render() {
     let backdrop;
     let contactBoard;
@@ -386,7 +385,7 @@ handleClickFive = () => {
 
                 
 
-                <form  >
+                <form  onSubmit={this.onSubmit()} >
                   <input
                     type="text"
                     name="fname"
@@ -406,10 +405,11 @@ handleClickFive = () => {
                     onChange={this.onChange}
                   />
 
-                  <input 
-                    type="submit"
-                    onSubmit={this.api} 
-                  />
+                  <input
+                  type="submit"
+                  value="Submit"
+                  > 
+                  </ input>
                 </form>
                 
               
