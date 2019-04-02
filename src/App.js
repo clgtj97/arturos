@@ -146,7 +146,7 @@ handleClickFive = () => {
         { 
           'Postman-Token': '57d47450-c1b4-40e5-a7fb-27d989281a95',
           'cache-control': 'no-cache',
-          Authorization: 'f650a6a7a42f6c5c67a528273940dd56,Bearer f650a6a7a42f6c5c67a528273940dd56-us20',
+          Authorization: 'apikey f650a6a7a42f6c5c67a528273940dd56-us20',
           'Access-Control-Allow-Origin':'*',
           'Content-Type': 'application/json' },
         body: 
