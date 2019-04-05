@@ -15,7 +15,7 @@ import imageTre from "./artFoto/artTree.jpg";
 import imageFiv from "./artFoto/artFiv.jpg";
 import imageSix from "./artFoto/artSix.jpg";
 import imagerealOn from "./artFoto/artrealone.jpg";
-
+var request = require('request');
 
 
 
@@ -134,25 +134,55 @@ handleClickFive = () => {
       this.setState({ [e.target.name]: e.target.value });
     }
     onSubmit = (e) => {
-      
-      // get our form data out of state
       const { fname, lname, email } = this.state;
-      const apikey = 'f650a6a7a42f6c5c67a528273940dd56-us20';
-      var options = { 
-        "method": "POST",
-        "url": "https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/" + apikey,
-        "headers": 
-        {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json" 
+      const apikey =                  'f650a6a7a42f6c5c67a528273940dd56-us20';
+      var url = 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/' + apikey;
+      let body = '{"email_address": "' + email +
+        '", "status": "subscribed", "merge_fields": {"FNAME": "' + fname +
+        '", "LNAME": "' + lname +
+        '"}}';
+      var options = {
+        url: url,
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
         },
-        "body": 
-        { "email_address": email,
-          "status": "subscribed",
-          "merge_fields": { "FNAME": fname, "LNAME": lname } }
+        body: body
       };
       
-      axios(options).then(response => console.log(response)).catch(error => console.log(error));
+      function callback(error, response, body) {
+        console.log("callback function");
+        if (!error) {
+          var info = (JSON.parse(body));
+          console.log(info);
+          console.log("status 200");      
+        }
+        else {
+          console.log(JSON.parse(body));
+        }
+      }
+      
+      request.post(options, callback);
+
+
+      // // get our form data out of state
+      // const { fname, lname, email } = this.state;
+      // const apikey = 'f650a6a7a42f6c5c67a528273940dd56-us20';
+      // var options = { 
+      //   "method": "POST",
+      //   "url": "https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/" + apikey,
+      //   "headers": 
+      //   {
+      //     "Access-Control-Allow-Origin": "*",
+      //     "Content-Type": "application/json" 
+      //   },
+      //   "body": 
+      //   { "email_address": email,
+      //     "status": "subscribed",
+      //     "merge_fields": { "FNAME": fname, "LNAME": lname } }
+      // };
+      
+      // axios(options).then(response => console.log(response)).catch(error => console.log(error));
       
       
 
