@@ -15,7 +15,7 @@ import imageTre from "./artFoto/artTree.jpg";
 import imageFiv from "./artFoto/artFiv.jpg";
 import imageSix from "./artFoto/artSix.jpg";
 import imagerealOn from "./artFoto/artrealone.jpg";
-var request = require('request');
+import request from 'request';
 
 
 
@@ -158,7 +158,8 @@ handleClickFive = () => {
           console.log("status 200");      
         }
         else {
-          console.log(JSON.parse(body));
+          // console.log(JSON.parse(body));
+          console.log(body);
         }
       }
       
