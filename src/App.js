@@ -143,7 +143,7 @@ handleClickFive = () => {
       --include
        */
       const { fname, lname, email } = this.state;
-      const apikey =                  'f650a6a7a42f6c5c67a528273940dd56-us20';
+      const apikey =                  'f650a6a7a42f6c5c67a528273940dd56';
       var url = 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/' + apikey;
       let body = '{"email_address": "' + email +
         '", "status": "subscribed", "merge_fields": {"FNAME": "' + fname +
