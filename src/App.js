@@ -134,6 +134,14 @@ handleClickFive = () => {
       this.setState({ [e.target.name]: e.target.value });
     }
     onSubmit = (e) => {
+      /*
+      curl --request POST \
+      --url 'https://usX.api.mailchimp.com/3.0/lists/57afe96172/members' \
+      --user 'anystring:apikey' \
+      --header 'content-type: application/json' \
+      --data '{"email_address":"urist.mcvankab+3@freddiesjokes.com", "status":"subscribed", "tags":["a tag", "another tag"]}' \
+      --include
+       */
       const { fname, lname, email } = this.state;
       const apikey =                  'f650a6a7a42f6c5c67a528273940dd56-us20';
       var url = 'https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/' + apikey;
@@ -142,12 +150,11 @@ handleClickFive = () => {
         '", "LNAME": "' + lname +
         '"}}';
       var options = {
-        url: url,
-        method: "POST",
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.parse(body)
+        url:        url,
+        method:     "POST",
+        user:       '"confortambienta:' + apikey + '"',
+        headers:    {'Content-type': 'application/json'},
+        body:       JSON.parse(body)
       };
       
       function callback(error, response, body) {
