@@ -137,27 +137,19 @@ handleClickFive = () => {
       
       // get our form data out of state
       const { fname, lname, email } = this.state;
-      
+      const apikey = 'f650a6a7a42f6c5c67a528273940dd56-us20';
       var options = { 
         "method": "POST",
-        "url": "https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members",
-        "auth": {
-          "username": "confortambienta", // anystring
-          "apikey": "f650a6a7a42f6c5c67a528273940dd56-us20" // Your API key
-        },
+        "url": "https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members/" + apikey,
         "headers": 
-        { 
-          
+        {
           "Access-Control-Allow-Origin": "*",
-          "Postman-Token": "3583e33a-f3b3-4efa-9d47-2efc8ca18b19",
-          "cache-control": "no-cache",
-          "Authorization": "Bearer f650a6a7a42f6c5c67a528273940dd56-us20",
-          "Content-Type": "application/json" },
+          "Content-Type": "application/json" 
+        },
         "body": 
         { "email_address": email,
           "status": "subscribed",
-          "merge_fields": { "FNAME": fname, "LNAME": lname } },
-        "json": true 
+          "merge_fields": { "FNAME": fname, "LNAME": lname } }
       };
       
       axios(options).then(response => console.log(response)).catch(error => console.log(error));
