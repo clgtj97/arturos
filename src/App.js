@@ -147,7 +147,7 @@ handleClickFive = () => {
         headers: {
           'Content-type': 'application/json'
         },
-        body: body
+        body: JSON.parse(body)
       };
       
       function callback(error, response, body) {
