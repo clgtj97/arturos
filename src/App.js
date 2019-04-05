@@ -143,7 +143,7 @@ handleClickFive = () => {
         "url": "https://us20.api.mailchimp.com/3.0/lists/f7feaaa9f3/members",
         "auth": {
           "username": "confortambienta", // anystring
-          "password": "f650a6a7a42f6c5c67a528273940dd56-us20" // Your API key
+          "apikey": "f650a6a7a42f6c5c67a528273940dd56-us20" // Your API key
         },
         "headers": 
         { 
