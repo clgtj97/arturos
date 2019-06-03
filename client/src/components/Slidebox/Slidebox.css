@@ -1,0 +1,79 @@
+.red{
+    grid-column: 1;
+    display: inline-block;
+    background: #DB3343;
+    width: 60%;
+    height: auto;
+    margin: 2em;
+    padding: 1.5em;
+    margin: 0;
+    margin-bottom: 10%;
+    border-radius: 1em;
+    box-shadow: none;
+}
+#margin{
+    margin-bottom: 0em;
+}
+#imgar{
+    margin: auto;
+    background: white;
+    width: 30%;
+    height: 30%;
+    padding: 0.5em;
+    border-radius: 1em;
+    display: block;
+    align-self: center;
+    justify-self: center;
+    box-shadow:0 15px 25px  rgba(0, 0, 0, .7);
+}
+#section-d .box{
+    padding: 2em;
+    color: #EBECF0;
+}
+#section-d .box:first-child{
+    background: rgb(2, 14, 39);
+}
+
+    
+@media(min-width: 700px) {
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+    }
+    #section-d ul{
+        grid-column: 2/4;
+    }
+    .box div{
+       
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        align-self: center;
+        justify-self: center;
+    }
+    #section-d ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    #section-d li{
+        width: 31%;
+    }
+}
+@media(max-width: 700px) {
+    #imgar{
+        width: 20%;
+    height: 20%;
+    }
+    .box div{
+        grid-column: span 2/4;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        align-self: center;
+  justify-self: center;
+    }
+}
