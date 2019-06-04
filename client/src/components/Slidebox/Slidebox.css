@@ -35,16 +35,13 @@
 }
 
     
-@media(min-width: 700px) {
+@media(min-width: 701px) {
     .grid{
         display: grid;
         grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
     }
-    #section-d ul{
-        grid-column: 2/4;
-    }
+    
     .box div{
-       
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
@@ -53,27 +50,10 @@
         align-self: center;
         justify-self: center;
     }
-    #section-d ul{
-        display: flex;
-        justify-content: space-around;
-    }
-    #section-d li{
-        width: 31%;
-    }
 }
 @media(max-width: 700px) {
     #imgar{
         width: 20%;
-    height: 20%;
-    }
-    .box div{
-        grid-column: span 2/4;
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        align-self: center;
-  justify-self: center;
-    }
+        height: 20%;
+        }
 }

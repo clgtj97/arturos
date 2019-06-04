@@ -421,7 +421,7 @@ handleClickFive = () => {
                     ></Input>
                   </FormGroup>
 
-                  <Button onClick={this.handleSubmit && this.alertClickHandler} >Submit</Button>
+                  <Button onClick={this.handleSubmit} >Submit</Button>
                 </Form>
               </div>
 

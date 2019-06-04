@@ -16,9 +16,6 @@ app.post("/api/form", (req, res) =>{
                 Name: ${req.body.name}
             </li>
             <li>
-                 Last name: ${req.body.nameDos}
-            </li>
-            <li>
                 Email: ${req.body.email}
             </li>
         </ul>
