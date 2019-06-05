@@ -2,15 +2,19 @@
   "name": "npx-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "^2.1.8",
-    "restify": "^8.3.1",
-    "nodemailer": "^6.2.1",
     "bootstrap": "^4.3.1",
-    "reactstrap": "^8.0.0"
+    "cors": "^2.8.5",
+    "nodemon": "^1.19.1",
+    "nodemailer": "^6.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-image-lightbox": "^5.1.0",
+    "react-scripts": "^2.1.5",
+    "reactstrap": "^8.0.0",
+    "xoauth2": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,6 +34,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {},
-  "author": "cesar leyva",
+  "keywords": [],
+  "author": "",
   "license": "ISC"
 }
