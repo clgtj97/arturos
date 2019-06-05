@@ -21,9 +21,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "concurrently \" npm run server\" \" npm run client\"",
+    "start": "npm run dev",
     "server": "nodemon index.js",
-    "client": "npm run start --prefix ./client"
+    "client": "npm run start --prefix ./client",
+    "dev": "concurrently \" npm run server\" \" npm run client\""
   },
   "keywords": [],
   "author": "",
