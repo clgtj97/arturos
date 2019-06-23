@@ -299,9 +299,6 @@ handleClickFive = () => {
           <section id="section-ca" className="grid" id="products">
             <div className="content-wrap" >
             <h2 className="content-title">Nuestros Proyectos</h2>
-              <Slidebox dig={this.state.slideIndex} next={this.incrementCount} back={this.decrementCount} >
-              </ Slidebox>
-
             </div>
           </section> 
 
@@ -319,23 +316,6 @@ handleClickFive = () => {
           </section>
 
           {/* This is section C 3 */}
-
-          {/*
-          <section id="section-ctres" className="grid">
-            <div className="content-wrap" id="contactform">
-            <a
-            id="1"  
-            className="btn"
-            onClick={this.contactOpenClickHandler}
-            >Contactanos</a>
-            
-            
-              {contactBoard}
-           
-            </div>
-          </section>
-          */}
-
            <section id="section-ctres" className="grid">
             <div className="content-wrap" id="contactform">
 
